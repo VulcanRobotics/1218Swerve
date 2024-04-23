@@ -1,0 +1,10 @@
+bin/*
+build/*
+.gradle/*
+*.DS_Store
+*.log
+*.class
+*.wpilog
+*.dat
+simgui-window.json
+BuildConstants.java

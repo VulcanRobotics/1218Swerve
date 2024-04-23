@@ -144,6 +144,9 @@ public class RobotContainer {
   }
 
   /**
+   * This can be used along with a trigger event to rumble the controller when something happens
+   * (e.g. robot has game piece)
+   *
    * @param controller The controller that will rumble.
    * @param time The time the controller will rumble for.
    */

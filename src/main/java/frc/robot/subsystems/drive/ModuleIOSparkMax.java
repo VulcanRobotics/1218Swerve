@@ -22,6 +22,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.RobotController;
+import frc.robot.Constants;
 import java.util.Queue;
 
 /**
@@ -38,8 +39,11 @@ import java.util.Queue;
  */
 public class ModuleIOSparkMax implements ModuleIO {
   // Gear ratios for SDS MK4i L2, adjust as necessary
-  private static final double DRIVE_GEAR_RATIO = (50.0 / 14.0) * (17.0 / 27.0) * (45.0 / 15.0);
-  private static final double TURN_GEAR_RATIO = 150.0 / 7.0;
+  private static final double DRIVE_GEAR_RATIO =
+      Constants.DriveConstants.GearRatio.SDS_L2
+          .driveRatio; // (50.0 / 14.0) * (17.0 / 27.0) * (45.0 / 15.0);
+  private static final double TURN_GEAR_RATIO =
+      Constants.DriveConstants.GearRatio.SDS_L2.angleRatio; // 150.0 / 7.0;
 
   private final CANSparkMax driveSparkMax;
   private final CANSparkMax turnSparkMax;

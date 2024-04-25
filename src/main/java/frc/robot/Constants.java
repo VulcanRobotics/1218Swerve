@@ -15,6 +15,7 @@ package frc.robot;
 
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.VecBuilder;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Translation3d;
@@ -45,6 +46,36 @@ public final class Constants {
 
     /** Replaying from a log file. */
     REPLAY
+  }
+
+  public static class DriveConstants {
+
+    /**
+     * These need to be changed based on the robot. To do so, first set them all to 0 and disable
+     * the turning motor velocity output. Then turn them all so that they are straight forward.
+     * Record each CANCoder value via smartdashboard. Enter in the recorded value for each of the
+     * modules. If the module spins backwards, simply add or subtract 180 degrees from the constant
+     * value.
+     */
+    public static final Rotation2d kMod0Offset = Rotation2d.fromDegrees(101.8);
+
+    public static final Rotation2d kMod1Offset = Rotation2d.fromDegrees(53.7 + 180);
+    public static final Rotation2d kMod2Offset = Rotation2d.fromDegrees(-141.3);
+    public static final Rotation2d kMod3Offset = Rotation2d.fromDegrees(-11.1 + 180);
+
+    public static enum GearRatio {
+      SDS_L1((50.0 / 14.0) * (19.0 / 25.0) * (45.0 / 15.0), (150.0 / 7.0)),
+      SDS_L2((50.0 / 14.0) * (17.0 / 27.0) * (45.0 / 15.0), (150.0 / 7.0)),
+      SDS_L3((50.0 / 14.0) * (16.0 / 28.0) * (45.0 / 15.0), (150.0 / 7.0));
+
+      public final double driveRatio;
+      public final double angleRatio;
+
+      GearRatio(double driveRatio, double angleRatio) {
+        this.driveRatio = driveRatio;
+        this.angleRatio = angleRatio;
+      }
+    }
   }
 
   public static class Vision {

@@ -25,6 +25,7 @@ import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.util.Units;
+import frc.robot.Constants;
 import java.util.Queue;
 
 /**
@@ -72,27 +73,27 @@ public class ModuleIOTalonFX implements ModuleIO {
         driveTalon = new TalonFX(21, "DriveSubsystemCANivore");
         turnTalon = new TalonFX(25, "DriveSubsystemCANivore");
         cancoder = new CANcoder(35, "DriveSubsystemCANivore");
-        absoluteEncoderOffset = Rotation2d.fromDegrees(101.8);
+        absoluteEncoderOffset = Constants.DriveConstants.kMod0Offset;
         break;
       case 1:
         driveTalon = new TalonFX(22, "DriveSubsystemCANivore");
         turnTalon = new TalonFX(26, "DriveSubsystemCANivore");
         cancoder = new CANcoder(36, "DriveSubsystemCANivore");
         absoluteEncoderOffset = //
-            Rotation2d.fromDegrees(53.7 + 180);
+            Constants.DriveConstants.kMod1Offset;
         break;
       case 2:
         driveTalon = new TalonFX(23, "DriveSubsystemCANivore");
         turnTalon = new TalonFX(27, "DriveSubsystemCANivore");
         cancoder = new CANcoder(37, "DriveSubsystemCANivore");
         absoluteEncoderOffset = //
-            Rotation2d.fromDegrees(-141.3);
+            Constants.DriveConstants.kMod2Offset;
         break;
       case 3:
         driveTalon = new TalonFX(24, "DriveSubsystemCANivore");
         turnTalon = new TalonFX(28, "DriveSubsystemCANivore");
         cancoder = new CANcoder(38, "DriveSubsystemCANivore");
-        absoluteEncoderOffset = Rotation2d.fromDegrees(-11.1 + 180);
+        absoluteEncoderOffset = Constants.DriveConstants.kMod3Offset;
         break;
       default:
         throw new RuntimeException("Invalid module index");

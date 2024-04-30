@@ -50,18 +50,25 @@ public final class Constants {
 
   public static class DriveConstants {
 
-    /**
+    /*
      * These need to be changed based on the robot. To do so, first set them all to 0 and disable
      * the turning motor velocity output. Then turn them all so that they are straight forward.
      * Record each CANCoder value via smartdashboard. Enter in the recorded value for each of the
      * modules. If the module spins backwards, simply add or subtract 180 degrees from the constant
-     * value.
+     * value. Change the calibration mode constant to stop voltage from running to the turn motor.
      */
-    public static final Rotation2d kMod0Offset = Rotation2d.fromDegrees(101.8);
 
+     /**Set this to true while getting new CANCoder offsets for the swerve modules. Otherwise false.
+      * This will ensure that the turn motors do not move and have little resistance.
+      */
+    public static final boolean kCalibrationMode = false;
+    
+    public static final Rotation2d kMod0Offset = Rotation2d.fromDegrees(101.8);
     public static final Rotation2d kMod1Offset = Rotation2d.fromDegrees(53.7 + 180);
     public static final Rotation2d kMod2Offset = Rotation2d.fromDegrees(-141.3);
     public static final Rotation2d kMod3Offset = Rotation2d.fromDegrees(-11.1 + 180);
+
+
 
     public static enum GearRatio {
       SDS_L1((50.0 / 14.0) * (19.0 / 25.0) * (45.0 / 15.0), (150.0 / 7.0)),
@@ -79,12 +86,15 @@ public final class Constants {
   }
 
   public static class Vision {
+    //Camera names will need to be changed depending on PhotonVision config.
     public static final String kCameraName = "FrontCam";
     public static final String kCameraNameFL = "FrontLeftCam";
     public static final String kCameraNameFR = "FrontRightCam";
     public static final String kCameraNameBL = "BackLeftCam";
     public static final String kCameraNameBR = "BackRightCam";
 
+
+    // ALL OF THESE CAMERA POSITIONS WILL NEED OT BE CHANGED DEPENDING ON WHERE THE CAMERAS ARE
     // private static final double TRACK_WIDTH_X = Units.inchesToMeters(25.0);
     // private static final double TRACK_WIDTH_Y = Units.inchesToMeters(25.0);
     private static final double PI = Math.PI;
@@ -133,8 +143,8 @@ public final class Constants {
                 Units.inchesToMeters(11.5)),
             new Rotation3d(0, Math.toRadians(-16), PI));
 
-    // The standard deviations of our vision estimated poses, which affect correction rate
-    // (Fake values. Experiment and determine estimation noise on an actual robot.)
+    //These are the standard deviation values that 1218 found to be optimal during the 2024 Crescendo season.
+    //These will likely vary depending on your robot's camera setup.
     public static final Matrix<N3, N1> kSingleTagStdDevs = VecBuilder.fill(3.0, 3.0, 3.0);
 
     public static final Matrix<N3, N1> kMultiTagStdDevs = VecBuilder.fill(0.25, 0.25, 1.0);
@@ -144,6 +154,9 @@ public final class Constants {
     // These values shouldn't really matter but I'd just keep them as is.
     public static final Matrix<N3, N1> kDefaultVisionStdDevs = VecBuilder.fill(0.05, 0.05, 0.05);
 
-    public static final double kVisionAutoMultiplier = 4.0;
+    /**If you choose to use vision in auto, this will determine how much less you trust them.
+     * Set this to 1.0 if you would like it to be the same as teleop.
+     */ 
+    public static final double kVisionAutoMultiplier = 1.0;
   }
 }

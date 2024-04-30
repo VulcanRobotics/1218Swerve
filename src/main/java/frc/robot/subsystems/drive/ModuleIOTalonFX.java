@@ -197,8 +197,9 @@ public class ModuleIOTalonFX implements ModuleIO {
 
   @Override
   public void setTurnVoltage(double volts) {
-    // Comment this out to read encoder offsets
-    turnTalon.setControl(new VoltageOut(volts));
+    if (!Constants.DriveConstants.kCalibrationMode) {
+      turnTalon.setControl(new VoltageOut(volts));
+    }
   }
 
   @Override

@@ -63,11 +63,6 @@ public class DriveCommands {
       boolean fieldCentric) {
     return Commands.run(
         () -> {
-          var alliance = DriverStation.getAlliance();
-          var invert = 1;
-          if (alliance.isPresent() && alliance.get() == Alliance.Red) {
-            invert = -1;
-          }
           // Apply deadband
           double linearMagnitude =
               MathUtil.applyDeadband(

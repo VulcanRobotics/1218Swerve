@@ -151,7 +151,7 @@ public final class Constants {
     public static final Matrix<N3, N1> kOdometryStdDevs = VecBuilder.fill(0.05, 0.05, 0.05);
 
     // These values shouldn't really matter but I'd just keep them as is.
-    public static final Matrix<N3, N1> kDefaultVisionStdDevs = VecBuilder.fill(0.05, 0.05, 0.05);
+    public static final Matrix<N3, N1> kDefaultVisionStdDevs = VecBuilder.fill(0.5, 0.5, 2.0);
 
     /**
      * If you choose to use vision in auto, this will determine how much less you trust them. Set
